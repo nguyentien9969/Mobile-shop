@@ -1,0 +1,53 @@
+﻿@using Base.Entity.MappedEntities
+@model ProductCategory
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><a class="text-muted fw-light" href="/ProductCategory">Danh mục sản phẩm /</a> Cập nhật</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form id="frmCategory">
+                        @Html.HiddenFor(m => m.Id);
+                        <div class="row">
+                            <div class="mb-3 col-md-4 error-container">
+                                <label class="form-label" for="basic-default-fullname">Tên danh mục</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autofocus = "autofocus" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-4 error-container">
+                                <label class="form-label" for="basic-default-message">Mô tả</label>
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-2 error-container">
+                                <label class="form-label" for="basic-default-fullname">Thứ tự</label>
+                                @Html.TextBoxFor(m => m.Sort, new { @class = "form-control"})
+                            </div>
+                            <div class="mb-3 col-md-2 error-container">
+                                <label class="form-label" for="basic-default-fullname">Hiển thị ở trang chủ</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" name="IsHomePage" @(Model.IsHomePage ? "checked" : "")>
+                                    <label class="form-check-label" for="defaultCheck3"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary" id="btnUpdate">Cập nhật</button>
+                        <button type="reset" class="btn btn-outline-secondary">Hủy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/ Basic Bootstrap Table -->
+</div>
+
+@section PageJs {
+    <script src="~/Assets/Scripts/ProductCategory/Update.js"></script>
+}

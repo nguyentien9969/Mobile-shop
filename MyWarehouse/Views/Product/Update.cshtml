@@ -1,0 +1,101 @@
+﻿@section PageCss {
+    <link href="~/Assets/Styles/Product/Create.css" rel="stylesheet" />
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><a class="text-muted fw-light" href="/Product">Sản phẩm /</a> Cập nhật</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form id="frmProduct">
+                        <input type="hidden" name="Id" value="@ViewBag.Id" />
+                        <div class="row">
+                            <div class="mb-6 col-md-6 error-container">
+                                <label class="form-label" for="basic-default-fullname">Tên sản phẩm</label>
+                                <input type="text" class="form-control" name="Name" />
+                            </div>
+                            <div class="mb-3 col-md-3 error-container">
+                                <label class="form-label" for="basic-default-fullname">Mã(Code)</label>
+                                <input type="text" class="form-control" name="Code" />
+                            </div>
+                            <div class="mb-3 col-md-3 error-container">
+                                <label class="form-label" for="basic-default-fullname">Số lượng tồn</label>
+                                <input type="text" class="form-control" name="Quantity" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-4 error-container">
+                                <label class="form-label" for="basic-default-fullname">Danh mục</label>
+                                <select class="form-select" name="CategoryId">
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-4 error-container">
+                                <label class="form-label" for="basic-default-fullname">Đơn giá</label>
+                                <input type="text" class="form-control" name="Price" />
+                            </div>
+                            <div class="mb-3 col-md-2 error-container">
+                                <label class="form-label" for="basic-default-fullname">Hoạt động</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="IsActive" name="IsActive" checked="">
+                                    <label class="form-check-label" for="defaultCheck3"></label>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-2 error-container">
+                                <label class="form-label" for="basic-default-fullname">Nổi bật</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="IsFeatured" name="IsFeatured">
+                                    <label class="form-check-label" for="defaultCheck3"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-4 error-container">
+                                <label class="form-label" for="basic-default-fullname">Ảnh bìa</label>
+                                <button type="button" class="btn btn-outline-secondary btn-inline-custom" id="selectMainImage">
+                                    <i class="tf-icons bx bx-edit"></i>
+                                </button>
+                                <div class="box-main-image hidden" id="boxMainImage">
+
+                                </div>
+                                <input type="hidden" name="MainImage" class="v-not-ignore"/>
+                            </div>
+                            <div class="mb-3 col-md-8 error-container">
+                                <label class="form-label" for="basic-default-fullname">Ảnh sản phẩm</label>
+                                <button type="button" class="btn btn-outline-secondary btn-inline-custom" id="selectListImages">
+                                    <i class="tf-icons bx bx-edit"></i>
+                                </button>
+                                <div class="box-main-image hidden" id="boxListImages">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-12 error-container">
+                            <label class="form-label" for="basic-default-message">Mô tả ngắn</label>
+                            <textarea name="ShortDescription"
+                                      class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3 col-md-12 error-container">
+                            <label class="form-label" for="basic-default-message">Mô tả chi tiết</label>
+                            <textarea name="Detail"
+                                      class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary" id="btnUpdate">Cập nhật</button>
+                        <button type="reset" class="btn btn-outline-secondary">Hủy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/ Basic Bootstrap Table -->
+</div>
+
+@section PageJs {
+    <script src="~/Assets/Libs/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/Libs/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/Scripts/Product/Update.js"></script>
+}

@@ -1,0 +1,115 @@
+﻿@using Base.Entity.ViewModels;
+@model ProductViewModel
+
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Trang trủ</a></li>
+                <li class="active">@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- content-wraper start -->
+<div class="content-wraper">
+    <div class="container">
+        <div class="row single-product-area frmSingleProduct" data-productId="@Model.Id">
+            <div class="col-lg-5 col-md-6">
+                <!-- Product Details Left -->
+                <div class="product-details-left">
+                    <div class="product-details-images slider-navigation-1">
+                        <div class="lg-image">
+                            <a class="popup-img venobox vbox-item" href="@Model.ImageUrl@Model.MainImage" data-gall="myGallery">
+                                <img src="@Model.ImageUrl@Model.MainImage">
+                            </a>
+                        </div>
+                        @if (Model.ParseListImages != null)
+                        {
+                            foreach (var image in Model.ParseListImages)
+                            {
+                                <div class="lg-image">
+                                    <a class="popup-img venobox vbox-item" href="@Model.ImageUrl@image" data-gall="myGallery">
+                                        <img src="@Model.ImageUrl@image">
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                    @if (Model.ParseListImages != null)
+                    {
+                        <div class="product-details-thumbs slider-thumbs-1">
+                            <div class="sm-image"><img src="@Model.ImageUrl@Model.MainImage"></div>
+                            @foreach (var image in Model.ParseListImages)
+                            {
+                                <div class="sm-image"><img src="@Model.ImageUrl@image"></div>
+                            }
+                        </div>
+                    }
+                </div>
+                <!--// Product Details Left -->
+            </div>
+
+            <div class="col-lg-7 col-md-6">
+                <div class="product-details-view-content pt-60">
+                    <div class="product-info">
+                        <h2>@Model.Name</h2>
+                        <span class="product-details-ref">Mã sản phẩm: @Model.Code</span>
+                        <div class="price-box pt-20">
+                            <span class="new-price new-price-2">@Model.Price</span>
+                        </div>
+                        <div class="product-desc">
+                            <p>
+                                <span>
+                                    @Model.ShortDescription
+                                </span>
+                            </p>
+                        </div>
+                        <div class="single-add-to-cart">
+                            <form action="#" class="cart-quantity">
+                                <div class="quantity">
+                                    <label>Số lượng</label>
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" value="1" type="text" name="Quantity">
+                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                    </div>
+                                </div>
+                                <button class="add-to-cart btnAddToCart" type="submit">Thêm vào giỏ</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content-wraper end -->
+<!-- Begin Product Area -->
+<div class="product-area pt-35">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="li-product-tab">
+                    <ul class="nav li-product-menu">
+                        <li><a class="active" data-toggle="tab" href="#description"><span>Mô tả chi tiết</span></a></li>
+                    </ul>
+                </div>
+                <!-- Begin Li's Tab Menu Content Area -->
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="description" class="tab-pane active show" role="tabpanel">
+                <div class="product-description">
+                    @Html.Raw(Model.Detail)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+
+@{ Html.RenderAction("_RelatedProduct", "Product", new { id = Model.Id });}
+

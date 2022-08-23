@@ -1,0 +1,36 @@
+﻿@using Base.Entity.ViewModels;
+@model List<ProductViewModel>
+
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <!-- Begin Li's Laptop Product Area -->
+    <section class="product-area li-laptop-product pt-30 pb-50">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Li's Section Area -->
+                <div class="col-lg-12">
+                    <div class="li-section-title">
+                        <h2>
+                            <span>Sản phẩm cùng danh mục:</span>
+                        </h2>
+                    </div>
+                    <div class="row">
+                        <div class="product-active owl-carousel">
+                            @foreach (var product in Model)
+                            {
+                                Html.RenderPartial("_SingleProduct", product);
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- Li's Section Area End Here -->
+            </div>
+        </div>
+    </section>
+    <!-- Li's Laptop Product Area End Here -->
+}
+

@@ -1,0 +1,66 @@
+﻿@using Base.Entity.ViewModels
+@model List<CartItemViewModel>
+@{
+    Layout = null;
+}
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <form action="#" id="frmCartIndex">
+        <div class="table-content table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="li-product-remove">#</th>
+                        <th class="li-product-thumbnail">Ảnh sản phẩm</th>
+                        <th class="cart-product-name">Tên sản phẩm</th>
+                        <th class="li-product-price">Đơn giá</th>
+                        <th class="li-product-quantity">Số lượng</th>
+                        <th class="li-product-subtotal">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cartItem in Model)
+                    {
+                        <tr data-productId="@cartItem.ProductId">
+                            <td class="li-product-remove">
+                                <a href="#" class="btnRemove">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                                <a href="#" class="btnRefresh">
+                                    <i class="fa fa-refresh"></i>
+                                </a>
+                            </td>
+                            <td class="li-product-thumbnail"><a href="/Product/Index/@cartItem.ProductId"><img width="80" height="80" class="rounded" src="@cartItem.ProductMainImage"></a></td>
+                            <td class="li-product-name"><a href="/Product/Index/@cartItem.ProductId">@cartItem.ProductName</a></td>
+                            <td class="li-product-price"><span class="amount">@cartItem.Price</span></td>
+                            <td class="quantity">
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" value="@cartItem.Quantity" name="Quantity" type="text">
+                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                </div>
+                            </td>
+                            <td class="product-subtotal"><span class="amount">@(cartItem.Quantity * cartItem.Price)</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-5 ml-auto">
+                <div class="cart-page-total">
+                    <ul>
+                        <li>tổng tiền <span>@Model.Sum(_ => _.Price * _.Quantity)</span></li>
+                    </ul>
+                    <a href="/Checkout">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <span>Chưa có sản phẩm trong giỏ</span>
+}

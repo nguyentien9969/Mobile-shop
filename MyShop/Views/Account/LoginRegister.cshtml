@@ -1,0 +1,74 @@
+﻿<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Đăng nhập/Đăng ký</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- Begin Login Content Area -->
+<div class="page-section mb-60">
+    <div class="container">
+        <div class="row">
+            <input type="hidden" value="@ViewBag.ReturnUrl" name="ReturnUrl"/>
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                <!-- Login Form s-->
+                <form action="#" id="frmLogin">
+                    <div class="login-form">
+                        <h4 class="login-title">Đăng nhập</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb-20">
+                                <label>Email*</label>
+                                <input class="mb-0" type="email" placeholder="Email" name="Email">
+                            </div>
+                            <div class="col-12 mb-20">
+                                <label>Password*</label>
+                                <input class="mb-0" type="password" placeholder="Mật khẩu" name="Password">
+                            </div>
+                            <div class="col-md-12">
+                                <button class="register-button mt-0" id="btnLogin">Đăng nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form action="#" id="frmRegister">
+                    <div class="login-form">
+                        <h4 class="login-title">Đăng ký</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb-20">
+                                <label>Họ tên*</label>
+                                <input class="mb-0" type="text" placeholder="Họ tên" name="FullName">
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label>Email*</label>
+                                <input class="mb-0" type="email" placeholder="Email" name="Email">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Mật khẩu*</label>
+                                <input class="mb-0" type="password" placeholder="Mật khẩu" name="Password">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Xác nhận mật khẩu*</label>
+                                <input class="mb-0" type="password" placeholder="Xác nhận mật khẩu" name="ConfirmPassword">
+                            </div>
+                            <div class="col-12">
+                                <button class="register-button mt-0" id="btnRegister">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Content Area End Here -->
+
+@section PageJs {
+    <script src="~/Assets/Scripts/Account/LoginRegister.js"></script>
+}

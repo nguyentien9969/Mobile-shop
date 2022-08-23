@@ -1,0 +1,79 @@
+﻿@using Base.Entity.ViewModels;
+@model MainProductViewModel
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.MainCategories != null && Model.MainCategories.Count > 0)
+{
+    foreach (var cate in Model.MainCategories)
+    {
+        var newProducts = Model.AllNewProducts.Where(_ => _.CategoryId == cate.Id).ToList();
+        var bestsellerProducts = Model.AllBestsellerProducts.Where(_ => _.CategoryId == cate.Id).ToList();
+        var featureProducts = Model.AllFeaturedProducts.Where(_ => _.CategoryId == cate.Id).ToList();
+
+        <!-- Begin Li's Trending Product Area -->
+        <section class="product-area li-trending-product pt-60 pb-45">
+            <div class="container">
+                <div class="row">
+                    <!-- Begin Li's Tab Menu Area -->
+                    <div class="col-lg-12">
+                        <div class="li-product-tab li-trending-product-tab">
+                            <h2>
+                                <span>@cate.Name</span>
+                            </h2>
+                            <ul class="nav li-product-menu li-trending-product-menu">
+                                <li><a class="active" data-toggle="tab" href="#new-@cate.Id"><span>Mới về</span></a></li>
+                                <li><a data-toggle="tab" href="#bestseller-@cate.Id"><span>Bán chạy</span></a></li>
+                                <li><a data-toggle="tab" href="#featured-@cate.Id"><span>Nổi bật</span></a></li>
+                            </ul>
+                        </div>
+                        <!-- Begin Li's Tab Menu Content Area -->
+                        <div class="tab-content li-tab-content li-trending-product-content">
+                            <div id="new-@cate.Id" class="tab-pane show fade in active">
+                                <div class="row">
+                                    <div class="product-active owl-carousel">
+                                        @foreach (var product in newProducts)
+                                        {
+                                            <div class="col-lg-12">
+                                                @{Html.RenderPartial("_SingleProduct", product);}
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="bestseller-@cate.Id" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="product-active owl-carousel">
+                                        @foreach (var product in bestsellerProducts)
+                                        {
+                                            <div class="col-lg-12">
+                                                @{Html.RenderPartial("_SingleProduct", product);}
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="featured-@cate.Id" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="product-active owl-carousel">
+                                        @foreach (var product in featureProducts)
+                                        {
+                                            <div class="col-lg-12">
+                                                @{Html.RenderPartial("_SingleProduct", product);}
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab Menu Content Area End Here -->
+                    </div>
+                    <!-- Tab Menu Area End Here -->
+                </div>
+            </div>
+        </section>
+        <!-- Li's Trending Product Area End Here -->
+    }
+}
+

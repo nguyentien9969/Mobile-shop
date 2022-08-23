@@ -1,0 +1,103 @@
+﻿@using Base.Entity.ViewModels
+@model List<CartItemViewModel>
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Đặt hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Checkout Area Strat-->
+<div class="checkout-area pt-60 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <form action="#" id="frmOrder">
+                    <div class="checkbox-form">
+                        <h3>Thông tin giao hàng</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Họ tên<span class="required">*</span></label>
+                                    <input placeholder="" type="text" name="FullName">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Địa chỉ <span class="required">*</span></label>
+                                    <input placeholder="" type="text" name="Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Email<span class="required">*</span></label>
+                                    <input placeholder="" type="email" name="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Số điện thoại<span class="required">*</span></label>
+                                    <input type="text" name="Phone">
+                                </div>
+                            </div>
+                            <div class="col-md-12 order-notes">
+                                <div class="checkout-form-list">
+                                    <label>Ghi chú</label>
+                                    <textarea id="checkout-mess" cols="30" rows="10" placeholder="" name="Note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="your-order">
+                    <h3>Thông tin đơn hàng</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Sản phẩm</th>
+                                    <th class="cart-product-total">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="cart_item">
+                                        <td class="cart-product-name"> @item.ProductName<strong class="product-quantity"> × @item.Quantity</strong></td>
+                                        <td class="cart-product-total"><span class="amount">@(item.Quantity*item.Price)</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="order-total">
+                                    <th>Tổng tiền</th>
+                                    <td><strong><span class="amount">@Model.Sum(_ => _.Price * _.Quantity)</span></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-accordion">
+                            <div class="order-button-payment">
+                                <input value="Đặt hàng" type="submit" id="btnPlaceOrder">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout Area End-->
+
+@section PageJs {
+    <script src="~/Assets/Scripts/Checkout/Index.js"></script>
+}

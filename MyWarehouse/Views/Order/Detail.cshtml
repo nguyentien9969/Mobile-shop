@@ -1,0 +1,103 @@
+﻿@section PageCss {
+    <link href="~/Assets/Libs/DataTables/css/semantic.min.css" rel="stylesheet" />
+    <link href="~/Assets/Libs/DataTables/css/dataTables.semanticui.css" rel="stylesheet" />
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><a class="text-muted fw-light" href="/Order">Đơn hàng /</a> Chi tiết</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form id="frmOrder">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="basic-default-fullname">Trạng thái</label>
+                                <select class="form-select" name="State">
+                                    <option value="0">Đang chờ</option>
+                                    <option value="1">Đang xử lý</option>
+                                    <option value="2">Đang giao hàng</option>
+                                    <option value="3">Hoàn thành</option>
+                                    <option value="4">Hủy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="basic-default-fullname">Mã đơn hàng</label>
+                                <input type="text" class="form-control" name="Id" disabled value="@ViewBag.Id" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="basic-default-fullname">Họ tên</label>
+                                <input type="text" class="form-control" name="FullName" disabled />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="basic-default-fullname">Email</label>
+                                <input type="text" class="form-control" name="Email" disabled />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="basic-default-fullname">Điện thoại</label>
+                                <input type="text" class="form-control" name="Phone" disabled />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-12">
+                                <label class="form-label" for="basic-default-fullname">Địa chỉ</label>
+                                <input type="text" class="form-control" name="Address" disabled />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-12">
+                                <label class="form-label" for="basic-default-fullname">Ghi chú</label>
+                                <textarea class="form-control" name="Note" disabled>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <table id="tbIndex" class="ui celled table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" style="text-align:right"><b>Tổng tiền</b></td>
+                                        <td><b id="totalAmount"></b></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary" id="btnUpdate">Cập nhật</button>
+                        <button type="reset" class="btn btn-outline-secondary">Hủy</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/ Basic Bootstrap Table -->
+</div>
+
+@section PageJs {
+    <script src="~/Assets/Libs/DataTables/js/semantic.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/dataTables.semanticui.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/buttons.semanticui.min.js"></script>
+    <script src="~/Assets/Scripts/Order/Detail.js"></script>
+}

@@ -1,0 +1,21 @@
+﻿@using Base.Entity.MappedEntities;
+@model List<ProductCategory>
+
+@{ 
+    Layout = null;
+}
+    
+    <!-- Begin Header Bottom Menu Area -->
+<div class="hb-menu">
+    <nav>
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+
+            @foreach (var category in Model)
+            {
+                <li><a href="/Product/Filter?cateId=@category.Id">@category.Name</a></li>
+            }
+        </ul>
+    </nav>
+</div>
+<!-- Header Bottom Menu Area End Here -->

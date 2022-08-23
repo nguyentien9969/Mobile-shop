@@ -1,0 +1,38 @@
+﻿@section PageCss {
+    <link href="~/Assets/Libs/DataTables/css/semantic.min.css" rel="stylesheet" />
+    <link href="~/Assets/Libs/DataTables/css/dataTables.semanticui.css" rel="stylesheet" />
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sản phẩm /</span> Danh sách</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="">
+        <table id="tbIndex" class="ui celled table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã(code)</th>
+                    <th>Danh mục</th>
+                    <th>Số lượng tồn</th>
+                    <th>Giá</th>
+                    <th>Hoạt động</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+</div>
+
+@section PageJs {
+    <script src="~/Assets/Libs/DataTables/js/semantic.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/dataTables.semanticui.min.js"></script>
+    <script src="~/Assets/Libs/DataTables/js/buttons.semanticui.min.js"></script>
+    <script src="~/Assets/Scripts/Product/Index.js"></script>
+}

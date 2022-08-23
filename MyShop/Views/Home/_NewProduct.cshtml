@@ -1,0 +1,20 @@
+﻿@using Base.Entity.ViewModels;
+@model List<ProductViewModel>
+
+@{
+    Layout = null;
+}
+
+<div id="li-new-product" class="tab-pane active show" role="tabpanel">
+    <div class="row">
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="product-active owl-carousel">
+                @foreach (var product in Model)
+                {
+                    Html.RenderPartial("_SingleProduct", product);
+                }
+            </div>
+        }
+    </div>
+</div>
